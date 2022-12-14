@@ -1,0 +1,27 @@
+$fontSize: 16px;
+:root {
+  // p,
+  // h1,
+  // h2,
+  // h3,
+  // h4   {
+  //   font-size: $fontSize !important;
+  // }
+  font-size: $fontSize !important;
+}
+
+@media screen and (max-width: 1080px) {
+  :root {
+    font-size: 0.1rem !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  :root {
+    font-size: 0.1rem !important;
+  }
+}
+@media screen and (max-width: 325px) {
+  :root {
+    font-size: 0.3rem !important;
+  }
+}
