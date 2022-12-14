@@ -6,13 +6,10 @@ import PopupCustom from "./../components/popup/PopupCustom";
 import { Button, Checkbox, Radio } from "antd";
 import DatePicker from "../components/timePicker/DatePickerCustom";
 import DatePickerCustom from "./../components/timePicker/DatePickerCustom";
-<<<<<<< HEAD
 import { useGlobalContext } from "../contexts/GlobalContext";
 import { Switch } from "antd";
-=======
 import SwitchCustom from "../components/switch/SwitchCustom";
 
->>>>>>> af4aac7640e2cb94febd17cf1c1d0cbe3554bf37
 const Home = () => {
   const arr = Array.from(new Array(10));
   const { isOpen, setHide, setShow, toggleShow }: useToggleType =
@@ -52,19 +49,11 @@ const Home = () => {
           type="date"
           onChange={(value) => console.log(value?.format("DD/MM/YYYY"))}
         ></DatePickerCustom>
-<<<<<<< HEAD
-        <Switch defaultChecked onChange={toggleDark} />
+        <SwitchCustom handleChange={toggleDark} isChecked={dark}></SwitchCustom>
+        <Checkbox>CheckBox</Checkbox>
         <Radio>Radio</Radio>
-        <Checkbox>Checkbox</Checkbox>
-=======
-        <SwitchCustom
-          isChecked={isOpen}
-          handleChange={(e) => {
-            console.log({e});
-          }}
-        />
->>>>>>> af4aac7640e2cb94febd17cf1c1d0cbe3554bf37
       </div>
+
       <div className=""></div>
     </React.Fragment>
   );

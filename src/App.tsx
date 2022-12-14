@@ -33,6 +33,7 @@ function App() {
           //   colorTextSecondary: "blue",
           //   colorFill: "blue",
           //   colorPrimaryHover: "green",
+          //   colorBgTextHover: "white",
           // },
         },
       }}

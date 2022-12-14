@@ -22,6 +22,7 @@ export const lightMode: Option = {
     colorTextPlaceholder: primaryDark,
     colorTextQuaternary: secondaryDark,
     colorLinkHover: "yellow",
+    colorIcon: primaryDark,
   },
   layout: {
     colorBgLayout: primaryLight,
@@ -43,13 +44,15 @@ export const darkMode: Option = {
     colorBgContainer: primaryDark,
     colorText: primaryLight,
     colorLink: primaryLight,
-    // colorBgElevated: primaryDark,
-    // colorTextPlaceholder: primaryLight,
     colorTextQuaternary: secondaryDark,
-    // colorIcon: primaryLight,
+    colorIcon: primaryLight,
+    colorLinkHover: "yellow",
+    colorBorder: "white",
+
     // colorPrimaryHover: primaryLight,
     // colorBorder: primaryLight,
-    colorLinkHover: "yellow",
+    // colorBgElevated: primaryDark,
+    // colorTextPlaceholder: primaryLight,
   },
   layout: {
     colorBgLayout: primaryDark,
@@ -58,10 +61,11 @@ export const darkMode: Option = {
   },
   Radio: {
     colorPrimary: "red",
+    colorPrimaryHover: "none",
   },
   Checkbox: {
-    // colorFill: "red",
     colorPrimary: "red",
+    colorPrimaryHover: "none",
   },
   Button: {
     colorPrimary: "red",
