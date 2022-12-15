@@ -9,21 +9,34 @@ import { createRoutesFromElements, Route } from "react-router";
 import Home from "./pages/Home";
 import Test from "./pages/Test";
 import { GlobalProvider } from "./contexts/GlobalContext";
+import BlogTest from "./pages/BlogTest";
+import { ConfigProvider } from "antd";
+import LayoutFC from "./components/layoutFC/LayoutFC";
+import Videos from "./pages/Videos";
+import DailyVideo from "./pages/DailyVideo";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route index element={<Home />}></Route>
-      <Route path="/test" element={<Test />}></Route>
-    </Route>
+    <>
+      <Route path="/" element={<App />}>
+        <Route index element={<Home />}></Route>
+        <Route path="/test" element={<Test />}></Route>
+      </Route>
+      <Route path="/blogs" element={<BlogTest />}>
+        <Route path="video" element={<Videos />}></Route>
+        <Route path="daily" element={<DailyVideo />}></Route>
+      </Route>
+    </>
   )
 );
 root.render(
   <GlobalProvider>
-    <RouterProvider router={router}></RouterProvider>
+    <LayoutFC>
+      <RouterProvider router={router}></RouterProvider>
+    </LayoutFC>
   </GlobalProvider>
 );
 

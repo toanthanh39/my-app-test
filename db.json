@@ -1,0 +1,11 @@
+{
+  "store": [
+    { "id": 1, "name": "Store 1", "address": "Lê Văn sỹ 0" },
+    { "id": 2, "name": "Store 2", "address": "Lê Văn sỹ 1" },
+    { "id": 3, "name": "Store 3", "address": "Lê Văn sỹ 2" },
+    { "id": 4, "name": "Store 4", "address": "Lê Văn sỹ 3" },
+    { "id": 5, "name": "Store 5", "address": "Lê Văn sỹ 4" },
+    { "id": 6, "name": "Store 6", "address": "Lê Văn sỹ 5" }
+
+  ]
+}

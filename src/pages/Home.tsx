@@ -9,6 +9,7 @@ import DatePickerCustom from "./../components/timePicker/DatePickerCustom";
 import { useGlobalContext } from "../contexts/GlobalContext";
 import { Switch } from "antd";
 import SwitchCustom from "../components/switch/SwitchCustom";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const arr = Array.from(new Array(10));
@@ -52,6 +53,7 @@ const Home = () => {
         <SwitchCustom handleChange={toggleDark} isChecked={dark}></SwitchCustom>
         <Checkbox>CheckBox</Checkbox>
         <Radio>Radio</Radio>
+        <Link to="/blogs">BLogs</Link>
       </div>
 
       <div className=""></div>

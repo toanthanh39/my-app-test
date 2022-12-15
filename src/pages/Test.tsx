@@ -4,7 +4,7 @@ import React from "react";
 const Test = () => {
   return (
     <div>
-      <Button type="primary">toan</Button>
+      <Button type="primary"></Button>
     </div>
   );
 };

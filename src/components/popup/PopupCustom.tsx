@@ -26,6 +26,7 @@ const PopupCustom = ({
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
+        centered
       >
         {children}
       </Modal>

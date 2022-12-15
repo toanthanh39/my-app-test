@@ -5,6 +5,7 @@ type Option = {
   Switch?: object;
   Radio?: object;
   Checkbox?: object;
+  Menu?: object;
 };
 
 const primaryDark = "#333333";
@@ -12,7 +13,9 @@ const primaryLight = "#ffffff";
 const secondaryDark = "#aaa";
 export const lightMode: Option = {
   token: {
-    colorPrimary: primaryDark,
+    // colorPrimary: primaryDark,
+    // colorPrimary: "red",
+
     colorBgBase: primaryLight,
     colorBgLayout: primaryLight,
     colorBgContainer: primaryLight,
@@ -21,19 +24,28 @@ export const lightMode: Option = {
     colorLink: primaryDark,
     colorTextPlaceholder: primaryDark,
     colorTextQuaternary: secondaryDark,
-    colorLinkHover: "yellow",
-    colorIcon: primaryDark,
+    colorIcon: primaryLight,
+    colorFillContent: "red",
+    boxShadow:
+      "0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02)",
+    // colorLinkHover: "yellow",
   },
   layout: {
     colorBgLayout: primaryLight,
     colorBgHeader: primaryLight,
     colorLink: primaryDark,
   },
-  Radio: {
-    colorFill: primaryDark,
-  },
+
   Checkbox: {
-    colorFill: primaryDark,
+    colorPrimaryHover: "none",
+  },
+  Menu: {
+    colorPrimary: "white",
+    colorText: "white",
+    // colorIcon: "blue",
+    // colorBgBase: primaryDark,
+    // colorBgLayout: primaryDark,
+    // colorBgContainer: primaryDark,
   },
 };
 export const darkMode: Option = {
@@ -47,8 +59,9 @@ export const darkMode: Option = {
     colorTextQuaternary: secondaryDark,
     colorIcon: primaryLight,
     colorLinkHover: "yellow",
-    colorBorder: "white",
-
+    colorBorder: primaryLight,
+    boxShadow:
+      "0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02)",
     // colorPrimaryHover: primaryLight,
     // colorBorder: primaryLight,
     // colorBgElevated: primaryDark,
@@ -70,6 +83,14 @@ export const darkMode: Option = {
   Button: {
     colorPrimary: "red",
     colorPrimaryHover: "none",
-    colorBorder: "white",
+    colorBorder: primaryLight,
+  },
+  Menu: {
+    // colorPrimary: "",
+    colorPrimary: "green",
+    colorIcon: "blue",
+    colorBgBase: primaryDark,
+    colorBgLayout: primaryDark,
+    colorBgContainer: primaryDark,
   },
 };
