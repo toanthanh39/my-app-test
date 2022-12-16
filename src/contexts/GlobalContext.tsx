@@ -1,9 +1,13 @@
-import { createContext, useContext, FC, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import useLocalStorage from "use-local-storage";
 
 interface AppContextInterface {
   value: any;
   dark: string;
   toggleDark: () => void;
+  favoriteVideo: any[];
+  handleRemoveFavorite: () => void;
+  setFavoriteVideo: React.Dispatch<React.SetStateAction<object[]>>;
 }
 
 const defaultState = {
@@ -15,12 +19,25 @@ const GlobalContext = createContext<any | null>(
 
 const GlobalProvider = (props: React.PropsWithChildren) => {
   const [dark, setDark] = useState("light");
+  const [favorite, setFavorite] = useLocalStorage<object[]>("like", []);
+  const [favoriteVideo, setFavoriteVideo] = useState<object[]>(favorite);
+  const handleRemoveFavorite = (item: any) => {
+    const arrUpdate = favoriteVideo.filter(
+      (Fitem: any) => Fitem.id !== item.id
+    );
+    setFavoriteVideo(arrUpdate);
+    setFavorite(arrUpdate);
+  };
   const toggleDark = () => {
     setDark((dark) => (dark === "dark" ? "light" : "dark"));
   };
+
   const value = {
     dark: dark,
     toggleDark: toggleDark,
+    favoriteVideo,
+    handleRemoveFavorite,
+    setFavoriteVideo,
   } as AppContextInterface;
   return (
     <GlobalContext.Provider value={value}>

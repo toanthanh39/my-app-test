@@ -10,6 +10,7 @@ import { useGlobalContext } from "../contexts/GlobalContext";
 import { Switch } from "antd";
 import SwitchCustom from "../components/switch/SwitchCustom";
 import { Link } from "react-router-dom";
+import { SwiperSlide } from "swiper/react";
 
 const Home = () => {
   const arr = Array.from(new Array(10));
@@ -28,7 +29,6 @@ const Home = () => {
 
       <div>
         <SwiperCustom
-          data={arr}
           perView={1}
           space={0}
           isNavigation={false}
@@ -40,7 +40,19 @@ const Home = () => {
             xl: 1,
           }}
           className="h-full"
-        ></SwiperCustom>
+        >
+          {arr.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div className="w-full h-full">
+                <img
+                  className="w-full h-full object-cover"
+                  src="/asset/images/slideshow_2.jpg"
+                  alt=""
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+        </SwiperCustom>
       </div>
       <div className="mb-10 mt-10  relative mx-auto w-full text-center flex gap-8 justify-center  ">
         <Button onClick={toggleShow} type="primary">

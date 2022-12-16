@@ -4,7 +4,7 @@ import { SwiperSlide, Swiper } from "swiper/react";
 import SkeletonCustom from "../skeleton/SkeletonCustom";
 import View from "../swapComponents/View";
 type Data = {
-  data: any[];
+  children: any;
   perView?: number;
   space?: number;
   className?: string;
@@ -19,7 +19,7 @@ type Data = {
   };
 };
 const SwiperCustom = ({
-  data,
+  children,
   perView = 10,
   space = 16,
   className = "",
@@ -33,7 +33,7 @@ const SwiperCustom = ({
     xl: 4,
   },
 }: Data) => {
-  if (data.length <= 0)
+  if (!children)
     return (
       <div>
         <SkeletonCustom></SkeletonCustom>
@@ -67,17 +67,7 @@ const SwiperCustom = ({
           },
         }}
       >
-        {data.map((item, index) => (
-          <SwiperSlide key={index}>
-            <div className="w-full h-full">
-              <img
-                className="w-full h-full object-cover"
-                src="/asset/images/slideshow_2.jpg"
-                alt=""
-              />
-            </div>
-          </SwiperSlide>
-        ))}
+        {children}
       </Swiper>
     </View>
   );

@@ -12,9 +12,11 @@ import { GlobalProvider } from "./contexts/GlobalContext";
 import BlogTest from "./pages/BlogTest";
 import { ConfigProvider } from "antd";
 import LayoutFC from "./components/layoutFC/LayoutFC";
-import Videos from "./pages/Videos";
+import Stores from "./pages/Store";
 import DailyVideo from "./pages/DailyVideo";
+import { QueryClient, QueryClientProvider } from "react-query";
 
+const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -26,17 +28,19 @@ const router = createBrowserRouter(
         <Route path="/test" element={<Test />}></Route>
       </Route>
       <Route path="/blogs" element={<BlogTest />}>
-        <Route path="video" element={<Videos />}></Route>
-        <Route path="daily" element={<DailyVideo />}></Route>
+        <Route index path="nBoards" element={<Stores />}></Route>
+        <Route path="nBoards/:id" element={<DailyVideo />}></Route>
       </Route>
     </>
   )
 );
 root.render(
   <GlobalProvider>
-    <LayoutFC>
-      <RouterProvider router={router}></RouterProvider>
-    </LayoutFC>
+    <QueryClientProvider client={queryClient}>
+      <LayoutFC>
+        <RouterProvider router={router}></RouterProvider>
+      </LayoutFC>
+    </QueryClientProvider>
   </GlobalProvider>
 );
 

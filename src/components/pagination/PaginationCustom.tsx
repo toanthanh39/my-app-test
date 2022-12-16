@@ -14,7 +14,7 @@ const PaginationCustom = ({
   className = "",
 }: Props) => {
   return (
-    <div className={`relative ml-5 mt-10 ${className}`}>
+    <div className={`relative ml-5 mt-10 mb-10 ${className}`}>
       <Pagination
         showSizeChanger
         onShowSizeChange={onShowSizeChange}

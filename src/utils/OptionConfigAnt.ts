@@ -6,6 +6,7 @@ type Option = {
   Radio?: object;
   Checkbox?: object;
   Menu?: object;
+  Modal?: object;
 };
 
 const primaryDark = "#333333";
@@ -24,8 +25,8 @@ export const lightMode: Option = {
     colorLink: primaryDark,
     colorTextPlaceholder: primaryDark,
     colorTextQuaternary: secondaryDark,
-    colorIcon: primaryLight,
-    colorFillContent: "red",
+    colorIcon: "black",
+    colorFillContent: "blue",
     boxShadow:
       "0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02)",
     // colorLinkHover: "yellow",
@@ -50,22 +51,18 @@ export const lightMode: Option = {
 };
 export const darkMode: Option = {
   token: {
-    colorPrimary: primaryLight,
-    colorBgBase: primaryDark,
+    // colorPrimary: primaryLight,
+    // colorBgBase: primaryDark,
     colorBgLayout: primaryDark,
     colorBgContainer: primaryDark,
     colorText: primaryLight,
     colorLink: primaryLight,
     colorTextQuaternary: secondaryDark,
     colorIcon: primaryLight,
-    colorLinkHover: "yellow",
     colorBorder: primaryLight,
     boxShadow:
       "0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02)",
-    // colorPrimaryHover: primaryLight,
-    // colorBorder: primaryLight,
-    // colorBgElevated: primaryDark,
-    // colorTextPlaceholder: primaryLight,
+    colorPrimaryHover: "red",
   },
   layout: {
     colorBgLayout: primaryDark,
@@ -81,16 +78,23 @@ export const darkMode: Option = {
     colorPrimaryHover: "none",
   },
   Button: {
-    colorPrimary: "red",
+    colorPrimary: secondaryDark,
     colorPrimaryHover: "none",
-    colorBorder: primaryLight,
+    colorPrimaryTextHover: "red",
+
+    // colorBorder: primaryLight,
+    // colorText: "blue",
+    colorTextSecondary: "#ffff40",
   },
   Menu: {
     // colorPrimary: "",
-    colorPrimary: "green",
+    colorPrimary: "#595959",
     colorIcon: "blue",
     colorBgBase: primaryDark,
     colorBgLayout: primaryDark,
     colorBgContainer: primaryDark,
+  },
+  Modal: {
+    colorText: primaryDark,
   },
 };

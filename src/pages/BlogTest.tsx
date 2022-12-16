@@ -27,14 +27,13 @@ const BlogTest = () => {
   return (
     <Layout style={{ height: "100vh", width: "100vw", overflow: "hidden" }}>
       <Header
-        className="bg-pink-500"
         style={{
           height: "10vh",
           width: "100vw",
           padding: "30px",
           minHeight: "70px",
           boxShadow: boxShadow,
-          background: dark === "dark" ? "#001529" : "white",
+          background: dark === "dark" ? "#595959" : "white",
           borderBottom: "1px solid #aaa",
         }}
       >
@@ -47,11 +46,16 @@ const BlogTest = () => {
           }}
         >
           <MenuUnfoldOutlined
+            style={{ fontSize: "20pt" }}
             onClick={() => setCollapsed(!collapsed)}
           ></MenuUnfoldOutlined>
           <Title
             level={3}
-            style={{ textAlign: "center", margin: "0", color: "red" }}
+            style={{
+              textAlign: "center",
+              margin: "0",
+              color: dark === "dark" ? "yellow" : "red",
+            }}
           >
             NAMPERFUME TV
           </Title>
@@ -62,7 +66,8 @@ const BlogTest = () => {
           style={{
             height: "100%",
             minWidth: "100px",
-            // background: colorBgContainer,
+            overflowY: "hidden",
+            background: dark === "dark" ? "#262626" : "white",
           }}
           trigger={null}
           collapsible
@@ -71,8 +76,14 @@ const BlogTest = () => {
           <Menu
             theme={dark}
             mode="inline"
-            defaultSelectedKeys={["1"]}
-            style={{ height: "100%  " }}
+            // defaultSelectedKeys={["1"]}
+            style={{
+              height: "auto",
+              maxHeight: "50%",
+              background: dark === "dark" ? "#262626" : "white",
+
+              overflowY: "scroll",
+            }}
             items={[
               {
                 key: "1",
@@ -86,7 +97,7 @@ const BlogTest = () => {
                     style={{ fontSize: "20px", color: "Highlight" }}
                   />
                 ),
-                label: <Link to="/blogs/video">Video</Link>,
+                label: <Link to="/blogs/nBoards">Store</Link>,
               },
               {
                 key: "3",
@@ -97,53 +108,21 @@ const BlogTest = () => {
                 ),
                 label: <Link to="/blogs/daily">Daily</Link>,
               },
-              {
-                key: "4",
-                icon: null,
-                label: (
-                  <SwitchCustom
-                    handleChange={toggleDark}
-                    isChecked={dark}
-                  ></SwitchCustom>
-                ),
-              },
-              {
-                key: "5",
-                icon: <UploadOutlined />,
-                label: "nav 3",
-              },
-              {
-                key: "6",
-                icon: <UploadOutlined />,
-                label: "nav 3",
-              },
-              {
-                key: "7",
-                icon: <UploadOutlined />,
-                label: "nav 3",
-              },
-              {
-                key: "8",
-                icon: <UploadOutlined />,
-                label: "nav 3",
-              },
-              {
-                key: "9",
-                icon: <UploadOutlined />,
-                label: "nav 3",
-              },
-              {
-                key: "10",
-                icon: <UploadOutlined />,
-                label: "nav 3",
-              },
-              {
-                key: "11",
-                icon: <UploadOutlined />,
-                label: "nav 3",
-              },
             ]}
           />
+          <Space
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "flex-start",
+              margin: "1rem",
+            }}
+          >
+            <SwitchCustom
+              handleChange={toggleDark}
+              isChecked={dark}
+            ></SwitchCustom>
+          </Space>
         </Sider>
         <Content
           style={{

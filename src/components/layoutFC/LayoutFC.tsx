@@ -6,7 +6,6 @@ import { lightMode } from "./../../utils/OptionConfigAnt";
 
 const LayoutFC = (props: React.PropsWithChildren) => {
   const { dark } = useGlobalContext();
-  console.log("🚀 ~ file: LayoutFC.tsx:9 ~ LayoutFC ~ dark", dark);
 
   return (
     <>
@@ -19,10 +18,29 @@ const LayoutFC = (props: React.PropsWithChildren) => {
             Radio: dark === "dark" ? darkMode.Radio : lightMode.Radio,
             Checkbox: dark === "dark" ? darkMode.Checkbox : lightMode.Checkbox,
             Menu: dark === "dark" ? darkMode.Menu : lightMode.Menu,
+            Modal: dark === "dark" ? darkMode.Modal : lightMode.Modal,
 
             List: {
               colorPrimary: "white",
               colorBgContainer: "blue",
+            },
+            Card: {
+              colorPrimary: "red",
+              colorBorder: "red",
+              colorBgElevated: "red",
+              colorBorderBg: "red",
+              colorBgMask: "red",
+              colorTextSecondary: "green",
+              colorBgBase: "red",
+              colorBorderSecondary: "#aaa",
+              boxShadow: " 0 0 5px red",
+            },
+            Input: {
+              colorIcon: "green",
+              colorPrimary: "red",
+            },
+            Switch: {
+              colorPrimary: "black  ",
             },
           },
         }}

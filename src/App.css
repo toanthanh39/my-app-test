@@ -32,6 +32,7 @@ body {
 }
 .swiper {
   height: 100%;
+  width: 100%;
 }
 span.swiper-pagination-bullet {
   width: 20px !important;
