@@ -1,7 +1,7 @@
 import * as React from "react";
 
-export const useToggleShow = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+export const useToggleShow = (initialValue?: boolean) => {
+  const [isOpen, setIsOpen] = React.useState(initialValue || false) as any;
 
   const setHide = () => {
     setIsOpen(false);
@@ -10,7 +10,7 @@ export const useToggleShow = () => {
     setIsOpen(true);
   };
   const toggleShow = () => {
-    setIsOpen((isOpen) => !isOpen);
+    setIsOpen((isOpen: any) => !isOpen);
   };
   return {
     isOpen,

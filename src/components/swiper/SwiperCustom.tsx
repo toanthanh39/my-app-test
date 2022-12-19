@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import { SwiperSlide, Swiper } from "swiper/react";
 import SkeletonCustom from "../skeleton/SkeletonCustom";
 import View from "../swapComponents/View";
@@ -40,35 +40,41 @@ const SwiperCustom = ({
       </div>
     );
   return (
-    <View className={`w-full h-full ${className}`}>
-      <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={space}
-        slidesPerView={perView}
-        navigation={isNavigation}
-        pagination={isNavigation ? { clickable: true } : false}
-        scrollbar={isScrollBar ? { draggable: true } : false}
-        breakpoints={{
-          325: {
-            slidesPerView: responsive.xs,
-            spaceBetween: space,
-          },
-          768: {
-            slidesPerView: responsive.md,
-            spaceBetween: space,
-          },
-          1024: {
-            slidesPerView: responsive.lg,
-            spaceBetween: space,
-          },
-          1500: {
-            slidesPerView: responsive.xl,
-            spaceBetween: space,
-          },
-        }}
-      >
-        {children}
-      </Swiper>
+    <View>
+      <div className={`w-full h-full ${className}`}>
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+          spaceBetween={space}
+          slidesPerView={perView}
+          navigation={isNavigation}
+          autoplay={{
+            delay: 1500,
+            disableOnInteraction: true,
+          }}
+          pagination={isNavigation ? { clickable: true } : false}
+          scrollbar={isScrollBar ? { draggable: true } : false}
+          breakpoints={{
+            325: {
+              slidesPerView: responsive.xs,
+              spaceBetween: space,
+            },
+            768: {
+              slidesPerView: responsive.md,
+              spaceBetween: space,
+            },
+            1024: {
+              slidesPerView: responsive.lg,
+              spaceBetween: space,
+            },
+            1500: {
+              slidesPerView: responsive.xl,
+              spaceBetween: space,
+            },
+          }}
+        >
+          {children}
+        </Swiper>
+      </div>
     </View>
   );
 };

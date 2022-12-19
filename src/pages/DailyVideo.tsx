@@ -1,39 +1,36 @@
-import { Layout } from "antd";
+import { Layout, Space } from "antd";
 import React from "react";
 import { useParams } from "react-router-dom";
 import useLocalStorage from "use-local-storage";
 import axios from "axios";
 import { useGlobalContext } from "../contexts/GlobalContext";
-type Data = {
-  name: string;
-  id: number | string;
-  address: string;
-};
+import SlideDaily from "./../components/dailyChildren/SlideDaily";
+import VideoDaily from "./../components/dailyChildren/VideoDaily";
 const DailyVideo = () => {
   const { id } = useParams();
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const [favorite, setFavorite] = useLocalStorage<object[]>("like", []);
-  const [url, setUrl] = React.useState("");
-  const { favoriteVideo, setFavoriteVideo } = useGlobalContext();
+  const [dataSingle, setDataSingle] = React.useState<any>({});
+  const { setFavoriteVideo } = useGlobalContext();
   React.useEffect(() => {
     axios
       .get(`http://localhost:3002/store/${id}`)
       .then((res: any) => {
-        const isExited = favorite.some((item: any) => item.id == id);
+        setDataSingle(res.data);
 
-        setUrl(res.data.video);
+        const isExited = favorite.some((item: any) => item.id == id);
         if (!isExited) {
           const arr = [...favorite];
           arr.unshift(res.data);
           setFavorite(arr);
-          setFavoriteVideo(favorite);
+          setFavoriteVideo(arr);
         } else if (isExited) {
           let exitE = favorite.findIndex((item: any) => item.id == id);
           const arrUpdate = [...favorite];
           arrUpdate.splice(exitE, 1);
           arrUpdate.unshift(res.data);
           setFavorite(arrUpdate);
-          setFavoriteVideo(favorite);
+          setFavoriteVideo(arrUpdate);
         }
       })
       .catch((error: any) => {
@@ -45,27 +42,28 @@ const DailyVideo = () => {
     };
   }, []);
   React.useEffect(() => {
-    videoRef.current?.requestFullscreen();
-    videoRef.current?.play();
-  }, [url]);
+    if (dataSingle) {
+      videoRef.current?.requestFullscreen();
+      videoRef.current?.play();
+    }
+  }, [dataSingle]);
 
   return (
-    <Layout style={{ height: "calc( 90vh - 10px )" }}>
-      <div className="w-full h-full rounded-lg">
-        {url !== "" && (
-          <video
-            ref={videoRef}
-            className="object-cover rounded-xl  "
-            controls
-            width="100%"
-            height="100%"
-            loop={true}
-            autoPlay
-          >
-            <source src={url} type="video/mp4" />
-          </video>
-        )}
-      </div>
+    <Layout style={{ height: "calc( 90vh - 10px )", position: "relative" }}>
+      {dataSingle && dataSingle.type === "video" ? (
+        <div className="w-full h-full rounded-lg">
+          {dataSingle?.video !== "" && (
+            <VideoDaily
+              dataSingle={dataSingle}
+              videoRef={videoRef}
+            ></VideoDaily>
+          )}
+        </div>
+      ) : (
+        dataSingle?.type === "slide" && (
+          <SlideDaily dataSingle={dataSingle}></SlideDaily>
+        )
+      )}
     </Layout>
   );
 };

@@ -15,7 +15,7 @@ import { SwiperSlide } from "swiper/react";
 const Home = () => {
   const arr = Array.from(new Array(10));
   const { isOpen, setHide, setShow, toggleShow }: useToggleType =
-    useToggleShow();
+    useToggleShow(false);
   const { dark, toggleDark } = useGlobalContext();
   return (
     <React.Fragment>

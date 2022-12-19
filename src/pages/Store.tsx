@@ -7,27 +7,25 @@ import SpinProgress from "./../components/spin/SpinProgress";
 import ResultCustom from "./../components/result/ResultCustom";
 import { Link, useNavigate } from "react-router-dom";
 import { Typography } from "antd";
-import { HashRouter } from "react-router-dom";
 import SwiperCustom from "./../components/swiper/SwiperCustom";
 import { SwiperSlide } from "swiper/react";
 import { CloseCircleOutlined } from "@ant-design/icons";
 import { useGlobalContext } from "../contexts/GlobalContext";
+import useLocalStorage from "use-local-storage";
+import { Data } from "../types/Types";
 const { Text, Title } = Typography;
 const { Search } = Input;
-type Data = {
-  name: string;
-  id: number;
-  address: string;
-  video: string;
-};
+
 const Stores = () => {
-  const [stores, setStores] = React.useState([]) as any[];
-  const [value, setValue] = React.useState("");
+  const [stores, setStores] = React.useState<Data[]>([]);
+  const [value, setValue] = React.useState<string>("");
   const { data, isFetching, isLoading, error, isError } = useQuery(
     "getStore",
     getStore
   );
   const { favoriteVideo, handleRemoveFavorite } = useGlobalContext();
+
+  const [favorite] = useLocalStorage<object[]>("like", []);
 
   const onSearch = (value: string) => console.log(value);
   const handleChangeSearch: React.ChangeEventHandler<HTMLInputElement> = (
@@ -36,8 +34,6 @@ const Stores = () => {
     let valueSearch = event.target.value.toLowerCase();
     setValue(valueSearch);
   };
-  const arrFavorite = localStorage.getItem("like") as string;
-  const listFavorite = JSON.parse(arrFavorite) as any;
 
   const newArray = useMemo(() => {
     return stores.filter((item: any) => {
@@ -51,11 +47,24 @@ const Stores = () => {
       setStores([...data]);
     }
   }, [data]);
+  const arr = [11, 23, 32, 89, 90, 22];
+  const key = arr.reduce((data: any, pound: any): any => {
+    data[pound] = (data[pound] || 0) + 1;
+    return data;
+  }, {});
+  // console.log("🚀 ~ file: Store.tsx:54 ~ key ~ key", key);
+  const ob = { 1: 10, 2: 3 };
+  React.useEffect(() => {}, [favorite]);
+  console.log("🚀 ~ file: Store.tsx:58 ~ Stores ~ ob", ob[1]);
   if (isLoading) {
     return <SpinProgress></SpinProgress>;
   } else if (isError) {
     return (
-      <ResultCustom title="sdf" status="500" label="reload"></ResultCustom>
+      <ResultCustom
+        title="NO DATA !"
+        status="500"
+        label="reload"
+      ></ResultCustom>
     );
   }
   return (
@@ -98,7 +107,9 @@ const Stores = () => {
               <SwiperSlide key={item.id}>
                 <div className="relative">
                   <CloseCircleOutlined
-                    onClick={() => handleRemoveFavorite(item)}
+                    onClick={() => {
+                      handleRemoveFavorite(item.id);
+                    }}
                     style={{
                       position: "absolute",
                       top: 0,

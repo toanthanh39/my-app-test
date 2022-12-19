@@ -8,6 +8,7 @@ interface AppContextInterface {
   favoriteVideo: any[];
   handleRemoveFavorite: () => void;
   setFavoriteVideo: React.Dispatch<React.SetStateAction<object[]>>;
+  favorite: object[];
 }
 
 const defaultState = {
@@ -20,13 +21,14 @@ const GlobalContext = createContext<any | null>(
 const GlobalProvider = (props: React.PropsWithChildren) => {
   const [dark, setDark] = useState("light");
   const [favorite, setFavorite] = useLocalStorage<object[]>("like", []);
+
   const [favoriteVideo, setFavoriteVideo] = useState<object[]>(favorite);
-  const handleRemoveFavorite = (item: any) => {
-    const arrUpdate = favoriteVideo.filter(
-      (Fitem: any) => Fitem.id !== item.id
-    );
-    setFavoriteVideo(arrUpdate);
+
+  const handleRemoveFavorite = (id: number) => {
+    const arrUpdate = favorite.filter((item: any) => item.id !== id);
+
     setFavorite(arrUpdate);
+    setFavoriteVideo(arrUpdate);
   };
   const toggleDark = () => {
     setDark((dark) => (dark === "dark" ? "light" : "dark"));
@@ -38,6 +40,7 @@ const GlobalProvider = (props: React.PropsWithChildren) => {
     favoriteVideo,
     handleRemoveFavorite,
     setFavoriteVideo,
+    favorite,
   } as AppContextInterface;
   return (
     <GlobalContext.Provider value={value}>
