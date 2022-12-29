@@ -45,3 +45,15 @@ span.swiper-pagination-bullet-active {
 button {
   box-shadow: none !important;
 }
+.ant-input:focus {
+  border: none;
+}
+#store .swiper {
+  overflow: unset;
+}
+.ant-modal-close {
+  color: blue !important;
+}
+video {
+  /* object-fit: cover; */
+}

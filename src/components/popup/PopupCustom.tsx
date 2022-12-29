@@ -22,6 +22,7 @@ const PopupCustom = ({
   return (
     <>
       <Modal
+        bodyStyle={{ textAlign: "center" }}
         title={title}
         open={isModalOpen}
         onOk={handleOk}

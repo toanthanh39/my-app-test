@@ -11,6 +11,7 @@ type Data = {
   isNavigation?: boolean;
   isPavigation?: boolean;
   isScrollBar?: boolean;
+  isAutoPlay?: boolean;
   responsive?: {
     xs?: number;
     md?: number;
@@ -26,6 +27,7 @@ const SwiperCustom = ({
   isNavigation = true,
   isPavigation = true,
   isScrollBar = true,
+  isAutoPlay = false,
   responsive = {
     xs: 1,
     md: 2,
@@ -47,10 +49,18 @@ const SwiperCustom = ({
           spaceBetween={space}
           slidesPerView={perView}
           navigation={isNavigation}
-          autoplay={{
-            delay: 1500,
-            disableOnInteraction: true,
-          }}
+          autoplay={
+            isAutoPlay
+              ? {
+                  delay: 1500,
+                  disableOnInteraction: true,
+                }
+              : false
+          }
+          // autoplay={{
+          //   delay: 1500,
+          //   disableOnInteraction: true,
+          // }}
           pagination={isNavigation ? { clickable: true } : false}
           scrollbar={isScrollBar ? { draggable: true } : false}
           breakpoints={{

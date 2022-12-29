@@ -7,14 +7,15 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { createRoutesFromElements, Route } from "react-router";
 import Home from "./pages/Home";
-import Test from "./pages/Test";
 import { GlobalProvider } from "./contexts/GlobalContext";
 import BlogTest from "./pages/BlogTest";
-import { ConfigProvider } from "antd";
 import LayoutFC from "./components/layoutFC/LayoutFC";
 import Stores from "./pages/Store";
 import DailyVideo from "./pages/DailyVideo";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Webcame from "./pages/Webcame";
+import PlayerCustom from "./components/Player/PlayerCustom";
+import Test from "./pages/Test";
 
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(
@@ -24,15 +25,16 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<App />}>
-        <Route index element={<Home />}></Route>
-        <Route path="/test" element={<Test />}></Route>
+        <Route index element={<Stores />}></Route>
+        <Route path=":id" element={<DailyVideo />}></Route>
+        <Route path="camera" element={<Webcame />}></Route>
+        <Route path="play" element={<Test />}></Route>
       </Route>
-      <Route path="/blogs" element={<BlogTest />}>
-        <Route index path="nBoards" element={<Stores />}></Route>
-        <Route path="nBoards/:id" element={<DailyVideo />}></Route>
-      </Route>
+      {/* <Route path="/nBoards" element={<BlogTest />}>
+      </Route> */}
     </>
-  )
+  ),
+  { basename: "/nBoards" }
 );
 root.render(
   <GlobalProvider>

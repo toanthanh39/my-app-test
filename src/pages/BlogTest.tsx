@@ -2,6 +2,7 @@ import {
   HomeFilled,
   MenuUnfoldOutlined,
   PlaySquareOutlined,
+  ShopOutlined,
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
@@ -34,7 +35,7 @@ const BlogTest = () => {
           minHeight: "70px",
           boxShadow: boxShadow,
           background: dark === "dark" ? "#595959" : "white",
-          borderBottom: "1px solid #aaa",
+          borderBottom: "1px solid #D9D9D9",
         }}
       >
         <Space
@@ -75,11 +76,11 @@ const BlogTest = () => {
         >
           <Menu
             theme={dark}
-            mode="inline"
-            // defaultSelectedKeys={["1"]}
+            mode="vertical"
+            defaultSelectedKeys={["2"]}
             style={{
-              height: "auto",
-              maxHeight: "50%",
+              height: "100%",
+
               background: dark === "dark" ? "#262626" : "white",
 
               overflowY: "scroll",
@@ -93,11 +94,9 @@ const BlogTest = () => {
               {
                 key: "2",
                 icon: (
-                  <VideoCameraOutlined
-                    style={{ fontSize: "20px", color: "Highlight" }}
-                  />
+                  <ShopOutlined style={{ fontSize: "20px", color: "red" }} />
                 ),
-                label: <Link to="/blogs/nBoards">Store</Link>,
+                label: <Link to="/nBoards">Stores</Link>,
               },
               {
                 key: "3",
@@ -106,12 +105,15 @@ const BlogTest = () => {
                     style={{ fontSize: "20px", color: "#ff6518" }}
                   />
                 ),
-                label: <Link to="/blogs/daily">Daily</Link>,
+                label: <Link to="/nBoards/camera">Camera</Link>,
               },
             ]}
           />
           <Space
             style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
               width: "100%",
               display: "flex",
               justifyContent: "flex-start",
@@ -126,7 +128,7 @@ const BlogTest = () => {
         </Sider>
         <Content
           style={{
-            margin: "10px",
+            padding: "16px",
             height: "100%",
             position: "relative",
             overflowY: "scroll",

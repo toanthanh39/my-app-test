@@ -8,6 +8,7 @@ import SlideDaily from "./../components/dailyChildren/SlideDaily";
 import VideoDaily from "./../components/dailyChildren/VideoDaily";
 const DailyVideo = () => {
   const { id } = useParams();
+  console.log("🚀 ~ file: DailyVideo.tsx:11 ~ DailyVideo ~ id", id);
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const [favorite, setFavorite] = useLocalStorage<object[]>("like", []);
   const [dataSingle, setDataSingle] = React.useState<any>({});

@@ -11,6 +11,9 @@ import { Switch } from "antd";
 import SwitchCustom from "../components/switch/SwitchCustom";
 import { Link } from "react-router-dom";
 import { SwiperSlide } from "swiper/react";
+import Checkouts from "./../components/checkout/Checkouts";
+import CheckoutGuest from "./../components/checkout/CheckoutGuest";
+import RadioCustom from "./../components/checkout/RadioCustom";
 
 const Home = () => {
   const arr = Array.from(new Array(10));
@@ -23,11 +26,9 @@ const Home = () => {
         handleCancel={setHide}
         isModalOpen={isOpen}
         handleOk={setHide}
-      >
-        <h1> le thanh toan</h1>
-      </PopupCustom>
+      ></PopupCustom>
 
-      <div>
+      {/* <div>
         <SwiperCustom
           perView={1}
           space={0}
@@ -65,10 +66,20 @@ const Home = () => {
         <SwitchCustom handleChange={toggleDark} isChecked={dark}></SwitchCustom>
         <Checkbox>CheckBox</Checkbox>
         <Radio>Radio</Radio>
-        <Link to="/blogs">BLogs</Link>
-      </div>
+      </div> */}
 
-      <div className=""></div>
+      {/* <div className="">
+        <Checkouts></Checkouts>
+      </div> */}
+      {/* <div className="mt-10">
+        <CheckoutGuest></CheckoutGuest>
+      </div> */}
+      {/* <div className="mt-10">
+        <RadioCustom></RadioCustom>
+      </div> */}
+      <div className="">
+        <Link to="/nBoards">BLogs</Link>
+      </div>
     </React.Fragment>
   );
 };
